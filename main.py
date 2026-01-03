@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+from replay_service.app.core.metadata import MetadataRegistry
 
 def generate_metadata(folder_path):
     """
@@ -31,9 +32,13 @@ def generate_metadata(folder_path):
         resultant_list.append({'Symbol':sym,'FileNames':folder_path+"/"+fs})
 
     df_mapping = pd.DataFrame(resultant_list)
-    df_mapping.to_csv("metadata.csv",index=False)
+    dest_file = os.path.join("./replay_service/data/","metadata.csv")
+    df_mapping.to_csv(dest_file,index=False)
 
     print("Metadata file generated!")
 
 # function call
 generate_metadata(folder_path = "crypto_currencies")
+
+registry = MetadataRegistry("./replay_service/data/metadata.csv")
+print(registry.get_file_for_symbol("BTC"))
