@@ -42,7 +42,7 @@ class CSVLoader:
         try:
             return datetime.strptime(raw_data,"%Y-%m-%d %H:%M:%S")
         except:
-            raise ValueError(f"Invalid date format: {raw_data}") from e
+            raise ValueError(f"Invalid date format: {raw_data}")
         
 
         
