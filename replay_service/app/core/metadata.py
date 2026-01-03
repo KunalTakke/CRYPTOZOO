@@ -26,5 +26,5 @@ class MetadataRegistry:
             raise KeyError(f"Symbol '{symbol}' not found in metadata registry")
         return self.symbol_to_file[symbol]
 
-
+    
 

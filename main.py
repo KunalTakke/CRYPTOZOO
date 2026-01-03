@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 from replay_service.app.core.metadata import MetadataRegistry
+from replay_service.app.services.loader import CSVLoader
 
 def generate_metadata(folder_path):
     """
@@ -42,3 +43,6 @@ generate_metadata(folder_path = "crypto_currencies")
 
 registry = MetadataRegistry("./replay_service/data/metadata.csv")
 print(registry.get_file_for_symbol("BTC"))
+loader = CSVLoader("crypto_currencies")
+rows = loader.load_crypto_data("coin_Bitcoin.csv")
+print(rows[0])
